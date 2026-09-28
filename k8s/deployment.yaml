@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-live-demo
+  labels:
+    app: devops-live-demo
+spec:
+  # Run 2 pod replicas for basic high availability & load balancing demonstration
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-live-demo
+  template:
+    metadata:
+      labels:
+        app: devops-live-demo
+    spec:
+      containers:
+        - name: devops-live-demo
+          # Replace YOUR_ACR_NAME with your Azure Container Registry name
+          image: YOUR_ACR_NAME.azurecr.io/devops-live-demo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+
+          # Readiness probe checks if the pod is ready to accept user traffic
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          # Liveness probe restarts the pod if the application becomes unresponsive
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20

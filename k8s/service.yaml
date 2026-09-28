@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-live-demo-service
+spec:
+  # LoadBalancer provisions an Azure Public IP when deployed to AKS
+  type: LoadBalancer
+  selector:
+    app: devops-live-demo
+  ports:
+    - name: http
+      port: 80         # Public port exposed to the Internet / Browser
+      targetPort: 3000 # Internal container port where Express is listening

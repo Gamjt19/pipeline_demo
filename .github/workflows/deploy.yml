@@ -1,0 +1,23 @@
+# ==============================================================================
+# GITHUB ACTIONS CI/CD PIPELINE (PLACEHOLDER)
+# ==============================================================================
+# NOTE: This workflow file is intentionally left as a placeholder template.
+# The complete GitHub Actions workflow will be built and explained step-by-step
+# manually during the DevOps live demo / classroom session.
+#
+# Planned Flow:
+# 1. Trigger:
+#    - push to main branch
+# 2. Build & Test:
+#    - Checkout repository
+#    - Node.js setup & test /health
+# 3. Docker & Azure:
+#    - Azure Login (az login / Azure credentials)
+#    - ACR Login (az acr login)
+#    - Docker build & tag image: <ACR_NAME>.azurecr.io/devops-live-demo:${{ github.sha }}
+#    - Docker push to Azure Container Registry (ACR)
+# 4. Deploy to AKS:
+#    - Set AKS cluster context (az aks get-credentials)
+#    - Apply Kubernetes manifests (kubectl apply -f k8s/)
+#    - Update container image (kubectl set image ...)
+# ==============================================================================

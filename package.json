@@ -1,0 +1,12 @@
+{
+  "name": "devops-live-demo",
+  "version": "1.0.0",
+  "description": "Simple production-style web application for demonstrating GitHub Actions CI/CD and Azure Kubernetes Service (AKS)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
